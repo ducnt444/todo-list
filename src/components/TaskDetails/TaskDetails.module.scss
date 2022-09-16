@@ -1,0 +1,41 @@
+.taskDetails {
+  padding: 30px 20px;
+  border: 1px solid black;
+  border-top: none;
+  .taskTitle {
+    height: 45px;
+    padding: 5px 10px;
+    width: 100%;
+    display: block;
+    border: 1px solid rgba(51, 51, 51, 0.4);
+    border-radius: 4px;
+  }
+  .description {
+    height: 125px;
+    width: 100%;
+    display: block;
+    padding: 10px;
+  }
+  .selections {
+    display: flex;
+    justify-content: space-between;
+    > div {
+      width: 45%;
+      max-width: 350px;
+      select,
+      input {
+        width: 100%;
+        display: block;
+        height: 45px;
+        padding: 0 15px;
+      }
+    }
+  }
+}
+.adding {
+  border-top: 1px solid black;
+}
+.errorText {
+  color: red;
+  margin-bottom: 0;
+}
