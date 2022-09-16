@@ -9,6 +9,7 @@ type MiscState = {
   deletingIds: string[];
   errorTitle: boolean;
   errorDuedate: boolean;
+  searchKeyword: string;
 };
 
 const initialState: MiscState = {
@@ -19,6 +20,7 @@ const initialState: MiscState = {
   deletingIds: [],
   errorTitle: false,
   errorDuedate: false,
+  searchKeyword: "",
 };
 
 export const miscSlice = createSlice({
@@ -50,9 +52,10 @@ export const miscSlice = createSlice({
       });
     },
     clearDeletingIds: (state) => {
-      console.log('def');
-      
       state.deletingIds = [];
+    },
+    updateSearchKeyword: (state, action: PayloadAction<string>) => {
+      state.searchKeyword = action.payload;
     },
   },
 });
@@ -66,6 +69,7 @@ export const {
   addDeletingIds,
   removeDeletingIds,
   clearDeletingIds,
+  updateSearchKeyword,
 } = miscSlice.actions;
 
 export default miscSlice.reducer;

@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updatefilteredTasks } from "../../../redux/slices/filteredTasks";
+import { updateSearchKeyword } from "../../../redux/slices/misc";
 import { RootState } from "../../../store";
 import styles from "./SearchBar.module.scss";
 
-type Props = {};
-
-const SearchBar = (props: Props) => {
+const SearchBar = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state: RootState) => state.tasks);
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,6 +15,7 @@ const SearchBar = (props: Props) => {
       );
     });
     dispatch(updatefilteredTasks(filteredTask));
+    dispatch(updateSearchKeyword(e.target.value));
   };
 
   return (

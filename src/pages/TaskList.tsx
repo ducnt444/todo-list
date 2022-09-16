@@ -13,12 +13,13 @@ import { Task } from "../types";
 const TaskList = () => {
   const tasks = useSelector((state: RootState) => state.tasks);
   const filteredTasks = useSelector((state: RootState) => state.filteredTasks);
+  const { searchKeyword } = useSelector((state: RootState) => state.misc);
 
   const sortTasks = (tasks: Task[]) =>
     tasks.slice().sort((a, b) => a.due_date.localeCompare(b.due_date));
 
   const [renderTasks, setRenderTasks] = useState(
-    filteredTasks.length > 0 ? sortTasks(filteredTasks) : sortTasks(tasks)
+    searchKeyword ? sortTasks(filteredTasks) : sortTasks(tasks)
   );
 
   useEffect(() => {
@@ -26,10 +27,8 @@ const TaskList = () => {
   }, [tasks]);
 
   useEffect(() => {
-    setRenderTasks(
-      filteredTasks.length > 0 ? sortTasks(filteredTasks) : sortTasks(tasks)
-    );
-  }, [tasks, filteredTasks]);
+    setRenderTasks(searchKeyword ? sortTasks(filteredTasks) : sortTasks(tasks));
+  }, [tasks, filteredTasks, searchKeyword]);
 
   return (
     <div>
